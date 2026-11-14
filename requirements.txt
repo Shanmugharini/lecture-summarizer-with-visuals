@@ -1,0 +1,22 @@
+# Python dependencies
+# System packages also needed:  ffmpeg, tesseract-ocr
+# Install PyTorch first (https://pytorch.org), then:  pip install -r requirements.txt
+# Detectron2 needs torch already installed:  pip install --no-build-isolation -r requirements.txt
+
+numpy<2
+openai-whisper
+transformers
+sentencepiece
+accelerate
+sentence-transformers
+scikit-learn
+opencv-python-headless
+pillow
+pytesseract
+reportlab
+gradio
+ftfy
+regex
+tqdm
+git+https://github.com/openai/CLIP.git
+git+https://github.com/facebookresearch/detectron2.git
