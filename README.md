@@ -4,6 +4,12 @@ A Python-based multimodal system that converts recorded educational lecture vide
 
 The project includes a **Gradio web interface**, a command-line processing option, and a Kaggle notebook workflow.
 
+
+## Demo Video
+
+Watch the project demonstration to see the lecture video processing workflow and the generated PDF notes:
+
+[**Watch the Demo Video on Google Drive**](https://drive.google.com/file/d/1Pnhxp6iWjTMATWiXqpyof07oUTaz9XqS/view?usp=sharing)
 ## Problem Statement
 
 Recorded lectures communicate information through both speech and visual material such as diagrams, charts, tables, and slide illustrations. Transcript-only tools omit these visuals, while frame-extraction tools do not connect them to the instructor's explanation. Learners are therefore left to manually match spoken concepts with the relevant slide content.
@@ -85,7 +91,7 @@ lecture-summarizer-with-visuals/
 └── README.md
 ```
 
-Generated files are written to the `outputs/` directory by default.
+The final generated PDF is saved in the `result/` directory.
 
 ## Getting Started
 
@@ -171,17 +177,16 @@ The repository also includes `notebook.ipynb` for running the pipeline in Kaggle
 6. Run the notebook cells in order.
 7. Download the generated PDF and other output files from the Kaggle working directory.
 
-## Output Files
+## Generated Output
 
-The application writes generated results to the configured working directory (default: `outputs/`).
+The system generates the final structured lecture notes as a PDF file.
 
-| Output | Description |
-|---|---|
-| `final_notes.pdf` | Structured lecture notes containing summaries and aligned visuals |
-| `module1_output.json` | Audio summaries with timestamps |
-| `module2_output.json` | Detected visual elements, timestamps, and OCR text |
-| `module3_output.json` | Summary-to-visual alignment results |
-| `crops/` | Extracted figure and table image crops |
+```text
+result/
+└── final_notes.pdf
+```
+
+The PDF contains the audio summaries together with their aligned visual elements.
 
 ## Results and Evaluation
 
@@ -196,26 +201,3 @@ The system was evaluated on a collection of lecture videos across multiple subje
 | Multimodal alignment | F1-score: **0.5455–0.8889** across evaluated videos |
 
 These figures are evaluation results from the project experiments; performance may vary with lecture quality, video layout, audio clarity, and hardware.
-
-## Limitations
-
-- The layout detector currently retains **figures and tables**; other elements such as titles, bullet lists, equations, and code blocks are not included in the final visual extraction stage.
-- OCR quality can decrease for small text, complex diagrams, unusual fonts, or low-resolution frames.
-- Incorrect or noisy speech transcription can affect the generated summaries and subsequent alignment.
-- The current alignment method uses a fixed 30-second candidate window and fixed temporal/semantic weights.
-- Processing is computationally intensive, and a GPU is recommended.
-- The fine-tuned Detectron2 checkpoint must be supplied separately.
-
-## Future Scope
-
-- Extend visual extraction to equations, code blocks, lists, and additional slide structures.
-- Adapt alignment weights dynamically to lecture pacing and slide transitions.
-- Improve OCR and handling of complex diagrams.
-- Support longer lecture videos and multilingual transcription.
-- Explore cloud deployment for broader access.
-
-## Acknowledgement
-
-Developed as the **CS6811 Final Year Project** at **Madras Institute of Technology, Anna University**.
-
-**Project title:** Multimodal Lecture Note Generation Using Text–Visual Alignment
